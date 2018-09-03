@@ -1,0 +1,183 @@
+*, *:after, *:before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template: 100px 1fr / 200px 50px 350px 1fr;
+  grid-template-areas: "logo logo navLinks rest" "left left right right"; }
+
+.logo {
+  position: relative;
+  grid-area: logo;
+  background: rgba(19, 18, 18, 0.1);
+  text-align: center;
+  font-size: 29px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 3.5;
+  color: black; }
+  .logo:hover {
+    color: black;
+    cursor: pointer; }
+  .logo:after, .logo:before {
+    position: absolute;
+    content: " ";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: #ccc; }
+  .logo:before {
+    width: 25%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9; }
+
+.rest {
+  grid-area: rest;
+  background: #ebebeb;
+  min-height: 0;
+  min-width: 0; }
+  .rest > * {
+    overflow: hidden; }
+
+.topRightIcons {
+  cursor: pointer;
+  grid-area: navLinks;
+  min-height: 0;
+  min-width: 0;
+  background: #ebebeb;
+  justify-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template: 1fr 1fr/repeat(auto-fit, minmax(80px, 80px)); }
+  .topRightIcons > * {
+    overflow: hidden; }
+  .topRightIcons button {
+    width: 70%;
+    height: 80%;
+    line-height: 1.5;
+    text-align: center;
+    border: 0px solid rgba(0, 0, 0, 0);
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: visible; }
+    .topRightIcons button:hover:after {
+      position: absolute;
+      content: attr(data);
+      top: 60%;
+      left: 40px;
+      width: auto;
+      padding: 2px 3px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 5px;
+      background: white;
+      z-index: 999;
+      border: 1px solid rgba(0, 0, 0, 0.212); }
+    .topRightIcons button:hover {
+      background: rgba(0, 0, 0, 0.7); }
+    .topRightIcons button:hover > i {
+      color: #eee; }
+    .topRightIcons button i {
+      font-size: 24px;
+      color: #7d7d7d; }
+
+.left {
+  padding-top: 60px;
+  position: relative;
+  grid-area: left;
+  background: #ebebeb;
+  -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template: 200px 100px 1fr/ 1fr;
+  grid-row-gap: 20px;
+  grid-template-areas: "displayFile" "form"; }
+  .left .displayFile {
+    position: relative;
+    grid-area: displayFile;
+    height: 100%;
+    width: 90%;
+    border: 2px dotted rgba(0, 0, 0, 0.4);
+    justify-self: center;
+    background: #ddd;
+    /*&:after {
+			content: "Uploaded files appear here ";
+			position: absolute;
+			top: -25px;
+			left: 0;
+			font-size: 15px;
+     	    letter-spacing: .5px;
+		}*/ }
+  .left form {
+    grid-area: form;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
+    .left form input[type="file"] {
+      display: none; }
+    .left form .custom-file-label {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 13px;
+      width: 150px;
+      height: 40px;
+      padding: 10px 30px;
+      letter-spacing: 1px;
+      -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+      line-height: 1.5; }
+      .left form .custom-file-label:hover {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff; }
+    .left form button {
+      display: inline-block;
+      width: 60px;
+      height: 40px;
+      vertical-align: top;
+      border-radius: 4px;
+      line-height: 1.5;
+      text-align: center;
+      border: 0px solid rgba(0, 0, 0, 0);
+      position: relative;
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: visible; }
+      .left form button:hover:after {
+        position: absolute;
+        content: attr(data);
+        top: 60%;
+        left: 40px;
+        width: auto;
+        padding: 2px 3px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 5px;
+        background: white;
+        z-index: 999;
+        border: 1px solid rgba(0, 0, 0, 0.212); }
+      .left form button:hover {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.6); }
+      .left form button:hover > i {
+        color: #eee; }
+      .left form button i {
+        font-size: 22px;
+        color: #7d7d7d; }
+
+.right {
+  grid-area: right;
+  position: relative; }

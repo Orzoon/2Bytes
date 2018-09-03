@@ -1,0 +1,233 @@
+*,*:after,*:before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	height: 100vh;
+	width: 100vw;
+	min-width: 0;
+	min-height: 0;
+	display: grid;
+	grid-template: 100px 1fr / 200px 50px 350px 1fr;
+	grid-template-areas: "logo logo navLinks rest"
+											 "left left right right";
+}
+
+// Logo--> TOP-LEFT 
+.logo {
+	position: relative;
+	grid-area: logo;
+	background: rgba(19, 18, 18, 0.1);
+	text-align: center;
+	font-size: 29px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	line-height: 3.5;
+	color: rgba(0,0,0,1);
+	
+	&:hover {
+		color: rgba(0,0,0,1);
+		cursor: pointer;
+	}
+	&:after, &:before{
+		position: absolute;
+		content: " ";
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 5px;
+		background: #ccc;
+	}
+	
+	&:before {
+		width: 25%;
+		background: rgba(0,0,0,.8);
+		z-index: 9;
+	}
+	
+
+}
+.rest {
+	grid-area: rest;
+	//background:  rgb(25, 44, 61);
+	background: rgb(235,235,235);
+	min-height: 0;
+	min-width: 0;
+
+	& > * {
+		overflow: hidden;
+	}
+}
+// Links--> TOP-RIGHT
+.topRightIcons {
+	cursor: pointer;
+	grid-area: navLinks;
+	min-height:0;
+	min-width: 0;
+	//background: rgb(240,240,240);
+	background: rgb(235,235,235);
+
+	justify-items: center;
+	align-items: center;
+	//Grid-Proptety
+	display: grid;
+	grid-template: 1fr 1fr/ repeat(auto-fit, minmax(80px,80px));
+	
+	& > * {
+		overflow: hidden;
+	}
+	
+	button {
+		//box-shadow:0px 0px 1px rgba(0,0,0,.1);
+		width: 70%;
+		height: 80%;
+		line-height: 1.5;
+		text-align: center;
+		border: 0px solid rgba(0,0,0,0);
+		position: relative;
+		border-radius: 4px;
+		cursor: pointer;
+		overflow: visible;
+		
+		&:hover:after {
+			position: absolute;
+			content: attr(data);
+			top: 60%;
+			left: 40px;
+			width: auto;
+			padding: 2px 3px;
+			font-size: 12px;
+			font-weight: bold;
+			border-radius: 5px;
+			background: rgb(255,255,255);
+			z-index: 999;
+			border: 1px solid rgba(0, 0, 0, 0.212);
+
+
+		}
+		&:hover {
+			background: rgba(0,0,0,.7);
+		}
+		&:hover > i {
+			color: #eee;
+		}
+		
+		i {
+			font-size: 24px;
+			//color: rgb(31, 143, 255);
+			color: rgb(125,125,125);
+		
+		}
+	
+	}
+}
+
+// LEFT --> left--side
+.left {
+	padding-top: 60px;
+	position: relative;
+	grid-area: left;
+	//background: whitesmoke;
+	background: rgb(235,235,235);
+	box-shadow: 0px 0px 2px rgba(0,0,0,.2);
+	display: grid;
+	grid-template: 200px 100px 1fr/ 1fr;
+	grid-row-gap: 20px;
+	grid-template-areas: "displayFile"
+												"form";
+	.displayFile {
+		position: relative;
+		grid-area: displayFile;
+		height: 100%;
+		width: 90%;
+		border: 2px dotted rgba(0,0,0,.4);
+		justify-self: center;	
+		background: #ddd;
+		/*&:after {
+			content: "Uploaded files appear here ";
+			position: absolute;
+			top: -25px;
+			left: 0;
+			font-size: 15px;
+     	    letter-spacing: .5px;
+		}*/
+	}
+	form {
+		grid-area: form;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		input[type = "file"] {
+			display: none;
+		}
+		.custom-file-label {
+			display: inline-block;
+			cursor: pointer;
+			font-size: 13px;
+			width: 150px;
+			height: 40px;
+			padding: 10px 30px;
+			letter-spacing: 1px;
+			box-shadow: 0px 0px 1px rgba(0,0,0,.2);
+			line-height: 1.5;
+			
+			&:hover {
+				box-shadow: none;
+				background: rgba(0,0,0,.6);
+				color: #fff;
+			}
+		}
+		button {
+			display: inline-block;
+			width: 60px;
+			height: 40px;
+			vertical-align: top;
+			border-radius: 4px;
+			line-height: 1.5;
+			text-align: center;
+			border: 0px solid rgba(0,0,0,0);
+			position: relative;
+			border-radius: 4px;
+			cursor: pointer;
+			overflow: visible;
+			
+			&:hover:after {
+				position: absolute;
+				content: attr(data);
+				top: 60%;
+				left: 40px;
+				width: auto;
+				padding: 2px 3px;
+				font-size: 12px;
+				font-weight: bold;
+				border-radius: 5px;
+				background: rgb(255,255,255);
+				z-index: 999;
+				border: 1px solid rgba(0, 0, 0, 0.212);
+			}
+			&:hover {
+				box-shadow: none;
+				background: rgba(0,0,0,.6);
+				
+			}
+			&:hover > i {
+			color: #eee;
+			}
+			
+			i {
+				font-size: 22px;
+				color: rgb(125,125,125);
+			}
+			}
+	}
+	
+}
+
+.right {
+	grid-area: right;
+	position: relative;
+	
+	//--> CANVAS
+}
